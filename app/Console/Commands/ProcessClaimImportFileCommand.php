@@ -38,10 +38,11 @@ class ProcessClaimImportFileCommand extends Command
      */
     public function handle()
     {
-        $file = \Storage::get('claims_import.TXT');
         $processed_filename = "claims_import_procesed.txt";
-        echo "hello\n";
+        $download_file = @file_get_contents("http://197.242.146.204/santam/claims_import.TXT");
+        \Storage::put("claims_import.TXT",$download_file);
         $response_file = \Storage::put($processed_filename, "");
+        $file = \Storage::get('claims_import.TXT');
 
         $list = explode(PHP_EOL, $file);
         $processed = array();

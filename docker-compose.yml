@@ -1,0 +1,13 @@
+web:
+   image: realution
+   environment:
+     - ALLOW_OVERRIDE=true
+     - DB_HOST=192.168.0.110
+     - DB_PORT=3306
+     - DB_DATABASE=santam
+     - DB_USERNAME=root
+     - DB_PASSWORD=realution
+   ports:
+     - "88:80"
+   volumes:
+     - /home/ravi/docker_files/santam_demo/storage/import_files:/var/www/html/santam/storage/import_files

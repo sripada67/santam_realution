@@ -42,12 +42,13 @@ class ProcessCourierImportFileCommand extends Command
     public function handle(ImportRequestsRepository $importRequestsRepository,DeliveryRequestsRepository $deliveryRequestsRepository)
     {
         $fileName = '4544_20180704_SANTAMCOURIER.txt';
-        $processed_filename = "4544_20180704_SANTAMCOURIER.txt";
-        
+        $processed_filename = "4544_20180704_SantamCourierConfirmation.txt";
+        $download_file = @file_get_contents("http://197.242.146.204/santam/4544_20180704_SANTAMCOURIER.txt");
+        \Storage::put($fileName,$download_file);
         $filename_slices = $importRequestsRepository->convertCIFileName($fileName,"santamcourier.txt");
         if(\Storage::exists($fileName)){
             $file = \Storage::get($fileName);
-            $response_file = \Storage::put('4544_20180704_SantamCourierConfirmation.txt', "");
+            $response_file = \Storage::put($processed_filename, "");
 
             $list = explode(PHP_EOL, $file);
             $list = array_filter($list);
@@ -73,8 +74,8 @@ class ProcessCourierImportFileCommand extends Command
                     $item .= ",Invalid Data";
                 }
                 $item = str_replace("\n","",$item);
-                $response_file_text = \Storage::get('c_import_procesed.txt');
-                \Storage::put('c_import_procesed.txt', $response_file_text."\n".$item);
+                $response_file_text = \Storage::get($processed_filename);
+                \Storage::put($processed_filename, $response_file_text."\n".$item);
                 $processed[] = $item;
             }
         }else{
