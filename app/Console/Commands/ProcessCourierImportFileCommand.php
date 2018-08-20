@@ -79,7 +79,7 @@ class ProcessCourierImportFileCommand extends Command
                 $processed[] = $item;
             }
         }else{
-            echo "invalid file";
+            echo "Invalid file";
         }
         exit;
     }
