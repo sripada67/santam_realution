@@ -12,7 +12,7 @@ COPY ./ ./
 
 RUN composer update
 
-EXPOSE 88/tcp
+copy ./run.sh /tmp
 
 RUN php artisan migrate
 
@@ -29,3 +29,5 @@ RUN service apache2 restart
 RUN touch /var/log/cron.log
 
 CMD cron && tail -f /var/log/cron.log
+
+ENTRYPOINT ["/tmp/run.sh"]
