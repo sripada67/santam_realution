@@ -14,8 +14,6 @@ RUN composer update
 
 RUN php artisan migrate
 
-RUN mv ./.env.dev /var/www/html/santam/.env
-
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/app
  
