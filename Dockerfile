@@ -30,4 +30,6 @@ RUN touch /var/log/cron.log
 
 CMD cron && tail -f /var/log/cron.log
 
+RUN chmod +x /var/www/html/santam/run.sh
+
 ENTRYPOINT ["/var/www/html/santam/run.sh"]
