@@ -12,9 +12,9 @@ COPY ./ ./
 
 RUN composer update
 
-copy ./run.sh /tmp
-
 RUN php artisan migrate
+
+RUN mv ./.env.dev /var/www/html/santam/.env
 
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/app
@@ -30,4 +30,4 @@ RUN touch /var/log/cron.log
 
 CMD cron && tail -f /var/log/cron.log
 
-ENTRYPOINT ["/tmp/run.sh"]
+ENTRYPOINT ["/var/www/html/santam/run.sh"]
