@@ -2,7 +2,7 @@ web:
    image: realution
    environment:
      - ALLOW_OVERRIDE=true
-     - DB_HOST=192.168.0.110
+     - DB_HOST=192.168.0.8
      - DB_PORT=3306
      - DB_DATABASE=santam
      - DB_USERNAME=root

@@ -12,8 +12,6 @@ COPY ./ ./
 
 RUN composer update
 
-RUN php artisan migrate
-
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/app
  
