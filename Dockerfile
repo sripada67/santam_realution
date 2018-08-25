@@ -20,7 +20,6 @@ RUN chmod 0644 /etc/cron.d/app
 
 # enable mod_rewrite
 RUN a2enmod rewrite
-RUN service apache2 restart
 
 RUN touch /var/log/cron.log
 
