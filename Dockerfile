@@ -10,7 +10,7 @@ WORKDIR /var/www/html/santam/
 
 COPY ./ ./
 
-RUN chmod 755 /var/www/html/santam/
+RUN chmod -R 777 /var/www/html/santam/storage/
 
 RUN composer update
 
