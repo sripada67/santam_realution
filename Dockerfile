@@ -10,6 +10,8 @@ WORKDIR /var/www/html/santam/
 
 COPY ./ ./
 
+RUN chmod 755 /var/www/html/santam/
+
 RUN composer update
 
 # Add crontab file in the cron directory
